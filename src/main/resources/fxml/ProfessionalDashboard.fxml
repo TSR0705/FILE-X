@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.Region?>
+
+<BorderPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.filex.controller.ProfessionalDashboardController" styleClass="dashboard-root">
+    <!-- Top bar -->
+    <top>
+        <VBox>
+            <HBox styleClass="topbar">
+                <Label styleClass="logo" text="FileX" />
+                <Label styleClass="app-title" text="Insider File Leak Detector" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Label fx:id="lblMonitoringStatus" styleClass="monitoring-status" text="MONITORING: OFF" />
+                <Button fx:id="btnStartMonitoring" text="Start Monitoring" styleClass="monitoring-button, start-button" />
+                <Button fx:id="btnStopMonitoring" text="Stop Monitoring" styleClass="monitoring-button, stop-button" />
+                <Button fx:id="btnSimulateEvent" text="Simulate Event" styleClass="simulate-button, button-hover, button-press" />
+            </HBox>
+            <HBox styleClass="sub-topbar">
+                <Label styleClass="folder-label" text="Monitoring: C:/Users/You/Projects/Confidential" />
+                <Button text="Browse" styleClass="action-button, refresh-button" fx:id="btnBrowseFolder" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button fx:id="btnRefresh" text="Refresh" styleClass="action-button, refresh-button" />
+                <Button fx:id="btnExport" text="Export to CSV" styleClass="action-button, export-button" />
+                <Button text="Statistics" styleClass="action-button, info-button" fx:id="btnStatistics" />
+                <Button text="Notifications" styleClass="action-button, info-button" fx:id="btnNotifications" />
+                <Button text="Toggle Theme" styleClass="action-button, info-button" fx:id="btnToggleTheme" />
+                <Button text="Help" styleClass="action-button, info-button" fx:id="btnHelp" />
+            </HBox>
+        </VBox>
+    </top>
+    
+    <!-- Main content area -->
+    <center>
+        <VBox styleClass="content">
+            <!-- Summary cards -->
+            <HBox styleClass="cards-container">
+                <VBox styleClass="card, card-hover, modern-card">
+                    <Label styleClass="card-title" text="Total Files" />
+                    <Label fx:id="lblTotalFiles" styleClass="card-value" text="0" />
+                    <Label styleClass="card-description" text="Files monitored" />
+                </VBox>
+                <VBox styleClass="card, card-hover, modern-card">
+                    <Label styleClass="card-title" text="Suspicious Files" />
+                    <Label fx:id="lblSuspiciousFiles" styleClass="card-value" text="0" />
+                    <Label styleClass="card-description" text="Potential threats" />
+                </VBox>
+                <VBox styleClass="card, card-hover, modern-card">
+                    <Label styleClass="card-title" text="Last Scan" />
+                    <Label fx:id="lblLastScan" styleClass="card-value" text="Never" />
+                    <Label styleClass="card-description" text="Last scan time" />
+                </VBox>
+                <VBox styleClass="card, card-hover, modern-card">
+                    <Label styleClass="card-title" text="Monitored Folders" />
+                    <Label fx:id="lblMonitoredFolders" styleClass="card-value" text="0" />
+                    <Label styleClass="card-description" text="Active folders" />
+                </VBox>
+            </HBox>
+            
+            <!-- Quick Summary Panel -->
+            <HBox styleClass="cards-container">
+                <VBox fx:id="quickSummaryPanel" styleClass="card, card-hover, quick-summary-panel">
+                    <Label styleClass="card-title" text="Quick Summary" />
+                    <Label fx:id="lblQuickSummary" styleClass="card-description" text="No data available" wrapText="true" />
+                </VBox>
+            </HBox>
+            
+            <!-- Progress bar and search/filter bar -->
+            <VBox styleClass="progress-search-container">
+                <ProgressBar fx:id="progressBar" styleClass="progress-indicator" progress="0.0" />
+                <HBox styleClass="search-filter-bar">
+                    <TextField fx:id="txtSearch" promptText="Search file names..." styleClass="search-field" />
+                    <Button fx:id="btnSearch" text="Search" styleClass="action-button, refresh-button" />
+                    <ComboBox fx:id="cmbEventType" styleClass="filter-combo" />
+                    <CheckBox fx:id="chkSuspiciousOnly" text="Suspicious Only" styleClass="filter-checkbox" />
+                    <Region HBox.hgrow="ALWAYS" />
+                </HBox>
+            </VBox>
+            
+            <!-- Charts and Table area -->
+            <HBox styleClass="charts-table-container" VBox.vgrow="ALWAYS">
+                <!-- Left pane: Charts -->
+                <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="charts-scroll-pane" HBox.hgrow="ALWAYS">
+                    <VBox styleClass="charts-pane">
+                        <!-- Events Over Time Chart -->
+                        <VBox styleClass="chart-container">
+                            <Label styleClass="chart-title" text="Events Over Time" />
+                            <LineChart fx:id="lineChartEvents" styleClass="line-chart" VBox.vgrow="ALWAYS">
+                                <xAxis>
+                                    <CategoryAxis label="Time" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="Events" />
+                                </yAxis>
+                            </LineChart>
+                        </VBox>
+                        
+                        <!-- Event Type Distribution Chart -->
+                        <VBox styleClass="chart-container">
+                            <Label styleClass="chart-title" text="Event Type Distribution" />
+                            <PieChart fx:id="pieChartTypes" styleClass="pie-chart" />
+                        </VBox>
+                        
+                        <!-- Alert Severity Distribution Chart -->
+                        <VBox styleClass="chart-container">
+                            <Label styleClass="chart-title" text="Alert Severity Distribution" />
+                            <BarChart fx:id="barChartSeverity" styleClass="bar-chart">
+                                <xAxis>
+                                    <CategoryAxis label="Severity" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis label="Count" />
+                                </yAxis>
+                            </BarChart>
+                        </VBox>
+                        
+                        <!-- File Activity Timeline -->
+                        <VBox fx:id="timelineContainer" styleClass="chart-container, timeline-container">
+                            <Label styleClass="chart-title" text="File Activity Timeline" />
+                            <!-- Timeline content will be added dynamically -->
+                        </VBox>
+                    </VBox>
+                </ScrollPane>
+                
+                <!-- Right pane: Table -->
+                <VBox styleClass="table-container">
+                    <Label styleClass="chart-title" text="Recent Events" />
+                    <TableView fx:id="tableEvents" styleClass="events-table" VBox.vgrow="ALWAYS">
+                        <columns>
+                            <TableColumn fx:id="fileNameCol" styleClass="table-column" text="File Name" />
+                            <TableColumn fx:id="eventTypeCol" styleClass="table-column" text="Event Type" />
+                            <TableColumn fx:id="timeCol" styleClass="table-column" text="Time" />
+                            <TableColumn fx:id="hashCol" styleClass="table-column" text="Hash" />
+                            <TableColumn fx:id="statusCol" styleClass="table-column" text="Status" />
+                            <!-- Remove the severity column since it doesn't exist in the FileEvent model -->
+                        </columns>
+                    </TableView>
+                </VBox>
+            </HBox>
+        </VBox>
+    </center>
+    
+    <!-- Right sidebar for alerts -->
+    <right>
+        <VBox fx:id="alertContainer" styleClass="alert-sidebar">
+            <HBox>
+                <Label styleClass="alert-sidebar-title" text="Alerts" />
+                <Region HBox.hgrow="ALWAYS" />
+                <Button text="Clear All" styleClass="action-button, refresh-button" fx:id="btnClearAlerts" />
+            </HBox>
+            <!-- Alerts will be added dynamically here -->
+        </VBox>
+    </right>
+    
+    <!-- Floating Action Button and Status bar -->
+    <bottom>
+        <VBox>
+            <HBox>
+                <Region HBox.hgrow="ALWAYS" />
+                <Button text="+" styleClass="fab" onAction="#showQuickActions" />
+            </HBox>
+            <HBox styleClass="status-bar-container">
+                <Label fx:id="statusLabel" styleClass="status-bar" text="Ready" />
+            </HBox>
+        </VBox>
+    </bottom>
+</BorderPane>

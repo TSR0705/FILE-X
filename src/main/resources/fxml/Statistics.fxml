@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.Region?>
+
+<VBox fx:id="statisticsContainer" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.filex.controller.StatisticsController" styleClass="statistics-container">
+    <!-- Header -->
+    <HBox styleClass="statistics-header">
+        <Label styleClass="section-title" text="Statistics &amp; Analytics" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="btnRefresh" text="Refresh" styleClass="action-button, refresh-button" />
+    </HBox>
+    
+    <!-- Summary Cards -->
+    <HBox styleClass="cards-container">
+        <VBox styleClass="card, card-hover, modern-card">
+            <Label styleClass="card-title" text="Total Events" />
+            <Label fx:id="lblTotalEvents" styleClass="card-value" text="0" />
+            <Label styleClass="card-description" text="All file events" />
+        </VBox>
+        <VBox styleClass="card, card-hover, modern-card">
+            <Label styleClass="card-title" text="Suspicious Events" />
+            <Label fx:id="lblSuspiciousEvents" styleClass="card-value" text="0" />
+            <Label styleClass="card-description" text="Potential threats" />
+        </VBox>
+        <VBox styleClass="card, card-hover, modern-card">
+            <Label styleClass="card-title" text="Files Monitored" />
+            <Label fx:id="lblFilesMonitored" styleClass="card-value" text="0" />
+            <Label styleClass="card-description" text="Active files" />
+        </VBox>
+        <VBox styleClass="card, card-hover, modern-card">
+            <Label styleClass="card-title" text="Alerts Generated" />
+            <Label fx:id="lblAlertsGenerated" styleClass="card-value" text="0" />
+            <Label styleClass="card-description" text="Security alerts" />
+        </VBox>
+    </HBox>
+    
+    <!-- Charts Area -->
+    <HBox styleClass="charts-container" VBox.vgrow="ALWAYS">
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" styleClass="charts-scroll-pane" HBox.hgrow="ALWAYS">
+            <VBox styleClass="charts-pane">
+                <!-- Events Over Time Chart -->
+                <Label styleClass="chart-title" text="Events Over Time" />
+                <LineChart fx:id="lineChartEvents" styleClass="line-chart" VBox.vgrow="ALWAYS">
+                    <xAxis>
+                        <CategoryAxis label="Time" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Events" />
+                    </yAxis>
+                </LineChart>
+                
+                <!-- Event Type Distribution Chart -->
+                <Label styleClass="chart-title" text="Event Type Distribution" />
+                <PieChart fx:id="pieChartTypes" styleClass="pie-chart" />
+                
+                <!-- Severity Distribution Chart -->
+                <Label styleClass="chart-title" text="Alert Severity Distribution" />
+                <BarChart fx:id="barChartSeverity" styleClass="bar-chart">
+                    <xAxis>
+                        <CategoryAxis label="Severity" />
+                    </xAxis>
+                    <yAxis>
+                        <NumberAxis label="Count" />
+                    </yAxis>
+                </BarChart>
+            </VBox>
+        </ScrollPane>
+    </HBox>
+</VBox>

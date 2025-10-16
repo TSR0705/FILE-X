@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox fx:id="cardContainer" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.filex.controller.CardController" styleClass="card">
+    <Label fx:id="lblCardTitle" text="Card Title" styleClass="card-title" />
+    <Label fx:id="lblCardValue" text="0" styleClass="card-value" />
+    <Label fx:id="lblCardDescription" text="Description" styleClass="card-description" />
+</VBox>

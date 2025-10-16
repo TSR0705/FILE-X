@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.shape.SVGPath?>
+
+<VBox fx:id="helpContainer" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.filex.controller.HelpController" styleClass="help-container">
+    <!-- Full-width header with title and search bar -->
+    <HBox styleClass="help-header">
+        <Label styleClass="section-title" text="Help &amp; Support" />
+        <Region HBox.hgrow="ALWAYS" />
+        <!-- Search Bar -->
+        <HBox styleClass="search-container">
+            <TextField fx:id="searchField" promptText="Search help topics..." styleClass="help-search-field" />
+            <Button styleClass="search-button">
+                <SVGPath content="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" styleClass="search-icon" />
+            </Button>
+        </HBox>
+    </HBox>
+    
+    <!-- Content Area -->
+    <ScrollPane fitToWidth="true" styleClass="help-scroll-pane" VBox.vgrow="ALWAYS">
+        <VBox styleClass="help-content">
+            <!-- Getting Started Card -->
+            <VBox styleClass="help-card">
+                <Label styleClass="card-title" text="Getting Started" />
+                <VBox styleClass="card-content">
+                    <Label styleClass="help-text" text="Follow these simple steps to get started with FileX:" wrapText="true" />
+                    <GridPane styleClass="steps-grid">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="NEVER" minWidth="30.0" prefWidth="30.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <Label styleClass="step-number" text="1" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Label styleClass="step-text" text="Configure the folders you want to monitor in Settings" GridPane.columnIndex="1" GridPane.rowIndex="0" wrapText="true" />
+                        
+                        <Label styleClass="step-number" text="2" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <Label styleClass="step-text" text="Start monitoring by clicking the 'Start Monitoring' button" GridPane.columnIndex="1" GridPane.rowIndex="1" wrapText="true" />
+                        
+                        <Label styleClass="step-number" text="3" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <Label styleClass="step-text" text="View real-time file activities in the Dashboard" GridPane.columnIndex="1" GridPane.rowIndex="2" wrapText="true" />
+                        
+                        <Label styleClass="step-number" text="4" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <Label styleClass="step-text" text="Check Logs for detailed file event history" GridPane.columnIndex="1" GridPane.rowIndex="3" wrapText="true" />
+                        
+                        <Label styleClass="step-number" text="5" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <Label styleClass="step-text" text="Review Alerts for potential security threats" GridPane.columnIndex="1" GridPane.rowIndex="4" wrapText="true" />
+                    </GridPane>
+                </VBox>
+            </VBox>
+            
+            <!-- Key Features Card -->
+            <VBox styleClass="help-card">
+                <Label styleClass="card-title" text="Key Features" />
+                <VBox styleClass="card-content">
+                    <Label styleClass="help-text" text="FileX provides powerful features to protect your sensitive data:" wrapText="true" />
+                    <GridPane styleClass="features-grid">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <VBox styleClass="feature-card" GridPane.columnIndex="0" GridPane.rowIndex="0">
+                            <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" styleClass="feature-icon" />
+                            <Label styleClass="feature-title" text="Activity Monitoring" />
+                            <Label styleClass="feature-description" text="Track file creation, modification, deletion, and copying in real-time" wrapText="true" />
+                        </VBox>
+                        
+                        <VBox styleClass="feature-card" GridPane.columnIndex="1" GridPane.rowIndex="0">
+                            <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" styleClass="feature-icon" />
+                            <Label styleClass="feature-title" text="Risk Detection" />
+                            <Label styleClass="feature-description" text="Identify suspicious file activities using advanced algorithms" wrapText="true" />
+                        </VBox>
+                        
+                        <VBox styleClass="feature-card" GridPane.columnIndex="0" GridPane.rowIndex="1">
+                            <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" styleClass="feature-icon" />
+                            <Label styleClass="feature-title" text="Real-time Alerts" />
+                            <Label styleClass="feature-description" text="Get notified of potential security threats with detailed alerts" wrapText="true" />
+                        </VBox>
+                        
+                        <VBox styleClass="feature-card" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <SVGPath content="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" styleClass="feature-icon" />
+                            <Label styleClass="feature-title" text="Audit &amp; Reports" />
+                            <Label styleClass="feature-description" text="Maintain comprehensive records of all file activities" wrapText="true" />
+                        </VBox>
+                    </GridPane>
+                </VBox>
+            </VBox>
+            
+            <!-- Keyboard Shortcuts Card -->
+            <VBox styleClass="help-card">
+                <Label styleClass="card-title" text="Keyboard Shortcuts" />
+                <VBox styleClass="card-content">
+                    <Label styleClass="help-text" text="Speed up your workflow with these keyboard shortcuts:" wrapText="true" />
+                    <GridPane styleClass="shortcuts-grid" hgap="20" vgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="200.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="300.0" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        </rowConstraints>
+                        <Label styleClass="shortcut-key" text="Ctrl + D" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Label styleClass="shortcut-description" text="Go to Dashboard" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                        
+                        <Label styleClass="shortcut-key" text="Ctrl + L" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <Label styleClass="shortcut-description" text="Go to Logs" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        
+                        <Label styleClass="shortcut-key" text="Ctrl + A" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                        <Label styleClass="shortcut-description" text="Go to Alerts" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        
+                        <Label styleClass="shortcut-key" text="Ctrl + R" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <Label styleClass="shortcut-description" text="Go to Reports" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        
+                        <Label styleClass="shortcut-key" text="Ctrl + S" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <Label styleClass="shortcut-description" text="Go to Statistics" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        
+                        <Label styleClass="shortcut-key" text="Ctrl + T" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <Label styleClass="shortcut-description" text="Go to Settings" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        
+                        <Label styleClass="shortcut-key" text="Ctrl + H" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                        <Label styleClass="shortcut-description" text="Show Help" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        
+                        <Label styleClass="shortcut-key" text="Ctrl + E" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                        <Label styleClass="shortcut-description" text="Simulate Event" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        
+                        <Label styleClass="shortcut-key" text="Ctrl + F" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+                        <Label styleClass="shortcut-description" text="Focus Search" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                    </GridPane>
+                </VBox>
+            </VBox>
+            
+            <!-- Support Card -->
+            <VBox styleClass="help-card">
+                <Label styleClass="card-title" text="Support" />
+                <VBox styleClass="card-content">
+                    <Label styleClass="help-text" text="Need additional help? Our support team is here for you:" wrapText="true" />
+                    <HBox styleClass="support-buttons-container">
+                        <Button fx:id="emailButton" styleClass="support-button" text="Contact Support" />
+                        <Button fx:id="docsButton" styleClass="support-button" text="Documentation" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </VBox>
+    </ScrollPane>
+</VBox>
