@@ -1,0 +1,6 @@
+FileX Logo Placeholder
+
+This is a placeholder for the FileX application logo.
+In a production environment, this should be replaced with an actual logo image file (PNG format recommended).
+
+For testing purposes, the application will work with this placeholder, but the ImageView in the FXML will not display an actual image.
