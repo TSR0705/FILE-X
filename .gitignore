@@ -64,3 +64,5 @@ setup-*.bat
 
 # ==== Test/build dirs ====
 /test-classes/
+.env
+ 

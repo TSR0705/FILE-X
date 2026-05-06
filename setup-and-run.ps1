@@ -23,18 +23,18 @@ if (-not (Test-Path "$JAVAFX_DIR/lib/javafx.controls.jar")) {
     Remove-Item -Path "javafx_sdk.zip", "$PROJECT_ROOT/temp_javafx" -Recurse -Force
 }
 
-# 3. Download SQLite JDBC if missing
-if (-not (Test-Path "$LIB_DIR/sqlite-jdbc.jar")) {
-    Write-Host "Downloading SQLite JDBC driver..."
-    $sqliteUrl = "https://repo1.maven.org/maven2/org/xerial/sqlite-jdbc/3.42.0.0/sqlite-jdbc-3.42.0.0.jar"
-    Invoke-WebRequest -Uri $sqliteUrl -OutFile "$LIB_DIR/sqlite-jdbc.jar"
+# 3. Download MySQL JDBC if missing
+if (-not (Test-Path "$LIB_DIR/mysql-connector.jar")) {
+    Write-Host "Downloading MySQL Connector/J..."
+    $mysqlUrl = "https://repo1.maven.org/maven2/mysql/mysql-connector-java/8.0.28/mysql-connector-java-8.0.28.jar"
+    Invoke-WebRequest -Uri $mysqlUrl -OutFile "$LIB_DIR/mysql-connector.jar"
 }
 
 # 4. Compile Project
 Write-Host "Compiling FileX..."
 $modulePath = "$JAVAFX_DIR/lib"
 $sourceFiles = Get-ChildItem -Path "src/main/java" -Filter "*.java" -Recurse | ForEach-Object { $_.FullName }
-$classpath = "$LIB_DIR/sqlite-jdbc.jar"
+$classpath = "$LIB_DIR/mysql-connector.jar"
 
 & javac --module-path $modulePath --add-modules javafx.controls,javafx.fxml -cp $classpath -d $TARGET_DIR $sourceFiles
 
@@ -49,4 +49,4 @@ Copy-Item -Path "src/main/resources/*" -Destination $TARGET_DIR -Recurse -Force
 
 # 6. Run Project
 Write-Host "Launching FileX..."
-& java --module-path $modulePath --add-modules javafx.controls,javafx.fxml -cp "$TARGET_DIR;$LIB_DIR/sqlite-jdbc.jar" com.filex.Main
+& java --module-path $modulePath --add-modules javafx.controls,javafx.fxml -cp "$TARGET_DIR;$LIB_DIR/mysql-connector.jar" com.filex.Main
