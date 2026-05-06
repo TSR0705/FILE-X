@@ -20,6 +20,7 @@ import javafx.application.Platform;
  */
 public class MonitorService {
     
+    private static MonitorService instance;
     private WatchService watchService;
     private ExecutorService executorService;
     private DatabaseService databaseService;
@@ -27,6 +28,18 @@ public class MonitorService {
     private String monitoredPath;
     private OnFileEventListener onFileEventListener;
     private AlertsController alertsController;
+    
+    /**
+     * Get the singleton instance of MonitorService
+     * 
+     * @return The singleton instance
+     */
+    public static synchronized MonitorService getInstance() {
+        if (instance == null) {
+            instance = new MonitorService();
+        }
+        return instance;
+    }
     
     // Interface for file event callbacks
     public interface OnFileEventListener {
@@ -43,9 +56,9 @@ public class MonitorService {
     }
     
     /**
-     * Constructor
+     * Private Constructor
      */
-    public MonitorService() {
+    private MonitorService() {
         try {
             this.watchService = FileSystems.getDefault().newWatchService();
             this.executorService = Executors.newSingleThreadExecutor();
