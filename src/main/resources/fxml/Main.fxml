@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.filex.controller.MainController" styleClass="main-root">
+    <!-- Sidebar -->
+    <left>
+        <fx:include source="Sidebar.fxml" fx:id="sidebar"/>
+    </left>
+    
+    <!-- Main content area -->
+    <center>
+        <StackPane fx:id="contentPane" styleClass="content-pane">
+            <fx:include source="Dashboard.fxml"/>
+        </StackPane>
+    </center>
+</BorderPane>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+
+<VBox fx:id="settingsContainer" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.filex.controller.SettingsController" styleClass="settings-container">
+    <Label styleClass="section-title" text="Application Settings" />
+    
+    <VBox styleClass="settings-section">
+        <Label styleClass="setting-label" text="Monitored Folder" />
+        <HBox styleClass="folder-setting">
+            <TextField fx:id="txtMonitoredFolder" styleClass="setting-input" promptText="Select folder to monitor" />
+            <Button fx:id="btnBrowseFolder" text="Browse" styleClass="browse-button" onAction="#browseFolder" />
+        </HBox>
+    </VBox>
+    
+    <VBox styleClass="settings-section">
+        <Label styleClass="setting-label" text="Monitoring Options" />
+        <CheckBox fx:id="chkEnableMonitoring" text="Enable File Monitoring" styleClass="setting-checkbox" selected="true" />
+        <CheckBox fx:id="chkEnableNotifications" text="Enable Notifications" styleClass="setting-checkbox" selected="true" />
+    </VBox>
+    
+    <VBox styleClass="settings-section">
+        <Label styleClass="setting-label" text="Alert Level" />
+        <ComboBox fx:id="cmbAlertLevel" styleClass="setting-combo" />
+    </VBox>
+    
+    <VBox styleClass="settings-section">
+        <Label styleClass="setting-label" text="Hashing Algorithm" />
+        <ComboBox fx:id="cmbHashingAlgorithm" styleClass="setting-combo" />
+    </VBox>
+    
+    <VBox styleClass="settings-section">
+        <Label styleClass="setting-label" text="Sensitivity" />
+        <Slider fx:id="sliderSensitivity" styleClass="setting-slider" min="0" max="100" value="50" />
+    </VBox>
+    
+    <HBox styleClass="settings-buttons">
+        <Button fx:id="btnSave" text="Save Settings" styleClass="settings-button" onAction="#saveSettings" />
+        <Button fx:id="btnReset" text="Reset to Defaults" styleClass="settings-button" onAction="#resetSettings" />
+    </HBox>
+</VBox>

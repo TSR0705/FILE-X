@@ -1,0 +1,119 @@
+/* Theme CSS file for FileX application - Updated with modern color scheme */
+
+/* Define CSS variables using the new color scheme */
+.root {
+  /* Background colors */
+  -fx-bg-color-light: #F5F7FA;
+  -fx-bg-color-dark: #0F0F17;
+  -fx-sidebar-bg-light: #EAECEE;
+  -fx-sidebar-bg-dark: #181825;
+  -fx-card-bg-light: #FFFFFF;
+  -fx-card-bg-dark: #1F1F2E;
+  
+  /* Text colors */
+  -fx-text-primary-light: #1A1A1A;
+  -fx-text-primary-dark: #E5E5E5;
+  -fx-text-secondary-light: #60656D;
+  -fx-text-secondary-dark: #B0B0B0;
+  
+  /* Accent colors */
+  -fx-primary-light: #0078D4;
+  -fx-primary-dark: #3399FF;
+  -fx-accent-light: #00B8A9;
+  -fx-accent-dark: #00D4C7;
+  
+  /* Border and shadow colors */
+  -fx-border-light: #DADCE0;
+  -fx-border-dark: #2A2A35;
+  -fx-shadow-light: rgba(0, 0, 0, 0.05);
+  -fx-shadow-dark: rgba(0, 0, 0, 0.3);
+  
+  /* Hover and interaction colors */
+  -fx-hover-light: rgba(0,120,212,0.08);
+  -fx-hover-dark: rgba(51,153,255,0.1);
+  
+  /* Status colors */
+  -fx-alert-light: #D32F2F;
+  -fx-alert-dark: #EF4444;
+  -fx-success-light: #388E3C;
+  -fx-success-dark: #34D399;
+  -fx-warning-light: #FFA000;
+  -fx-warning-dark: #FBBF24;
+  -fx-info-light: #1976D2;
+  -fx-info-dark: #60A5FA;
+  
+  /* Current theme variables (will be overridden by light/dark themes) */
+  -fx-background: -fx-bg-color-light;
+  -fx-sidebar-bg: -fx-sidebar-bg-light;
+  -fx-card-bg: -fx-card-bg-light;
+  -fx-text-primary: -fx-text-primary-light;
+  -fx-text-secondary: -fx-text-secondary-light;
+  -fx-primary: -fx-primary-light;
+  -fx-accent: -fx-accent-light;
+  -fx-border: -fx-border-light;
+  -fx-shadow: -fx-shadow-light;
+  -fx-hover: -fx-hover-light;
+  -fx-alert: -fx-alert-light;
+  -fx-success: -fx-success-light;
+  -fx-warning: -fx-warning-light;
+  -fx-info: -fx-info-light;
+}
+
+/* Font face definitions */
+@font-face {
+    font-family: 'Roboto Mono';
+    src: url('../fonts/RobotoMono-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins-Medium.ttf');
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('../fonts/Inter-Regular.ttf');
+}
+
+/* Root styles */
+.root {
+    -fx-background-color: -fx-background;
+    -fx-font-family: 'Inter', 'Poppins', 'Roboto Mono';
+    -fx-font-size: 13px;
+}
+
+/* Light theme overrides */
+.light-mode {
+    -fx-background: -fx-bg-color-light;
+    -fx-sidebar-bg: -fx-sidebar-bg-light;
+    -fx-card-bg: -fx-card-bg-light;
+    -fx-text-primary: -fx-text-primary-light;
+    -fx-text-secondary: -fx-text-secondary-light;
+    -fx-primary: -fx-primary-light;
+    -fx-accent: -fx-accent-light;
+    -fx-border: -fx-border-light;
+    -fx-shadow: -fx-shadow-light;
+    -fx-hover: -fx-hover-light;
+    -fx-alert: -fx-alert-light;
+    -fx-success: -fx-success-light;
+    -fx-warning: -fx-warning-light;
+    -fx-info: -fx-info-light;
+}
+
+/* Dark theme overrides */
+.dark-mode {
+    -fx-background: -fx-bg-color-dark;
+    -fx-sidebar-bg: -fx-sidebar-bg-dark;
+    -fx-card-bg: -fx-card-bg-dark;
+    -fx-text-primary: -fx-text-primary-dark;
+    -fx-text-secondary: -fx-text-secondary-dark;
+    -fx-primary: -fx-primary-dark;
+    -fx-accent: -fx-accent-dark;
+    -fx-border: -fx-border-dark;
+    -fx-shadow: -fx-shadow-dark;
+    -fx-hover: -fx-hover-dark;
+    -fx-alert: -fx-alert-dark;
+    -fx-success: -fx-success-dark;
+    -fx-warning: -fx-warning-dark;
+    -fx-info: -fx-info-dark;
+}

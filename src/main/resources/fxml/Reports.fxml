@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.layout.Region?>
+
+<VBox fx:id="reportsContainer" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.filex.controller.ReportsController" styleClass="reports-container">
+    <!-- Header -->
+    <HBox styleClass="reports-header">
+        <Label styleClass="section-title" text="Security Reports" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="btnRefresh" text="Refresh" styleClass="action-button, refresh-button" />
+    </HBox>
+    
+    <!-- Report Filters -->
+    <HBox styleClass="search-filter-bar">
+        <Label text="Date Range:" styleClass="filter-label" />
+        <DatePicker fx:id="dateFrom" promptText="From" styleClass="date-picker" />
+        <DatePicker fx:id="dateTo" promptText="To" styleClass="date-picker" />
+        <ComboBox fx:id="cmbReportType" promptText="Report Type" styleClass="filter-combo" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="btnGenerate" text="Generate Report" styleClass="action-button, export-button" />
+    </HBox>
+    
+    <!-- Report Content -->
+    <VBox VBox.vgrow="ALWAYS">
+        <!-- Summary Cards -->
+        <HBox styleClass="cards-container">
+            <VBox styleClass="card, card-hover, modern-card">
+                <Label styleClass="card-title" text="Total Events" />
+                <Label fx:id="lblTotalEvents" styleClass="card-value" text="0" />
+                <Label styleClass="card-description" text="Events in period" />
+            </VBox>
+            <VBox styleClass="card, card-hover, modern-card">
+                <Label styleClass="card-title" text="Suspicious Events" />
+                <Label fx:id="lblSuspiciousEvents" styleClass="card-value" text="0" />
+                <Label styleClass="card-description" text="Potential threats" />
+            </VBox>
+            <VBox styleClass="card, card-hover, modern-card">
+                <Label styleClass="card-title" text="Files Accessed" />
+                <Label fx:id="lblFilesAccessed" styleClass="card-value" text="0" />
+                <Label styleClass="card-description" text="Unique files" />
+            </VBox>
+        </HBox>
+        
+        <!-- Charts -->
+        <HBox styleClass="charts-container">
+            <BarChart fx:id="barChartEvents" styleClass="bar-chart" HBox.hgrow="ALWAYS">
+                <xAxis>
+                    <CategoryAxis label="Event Types" />
+                </xAxis>
+                <yAxis>
+                    <NumberAxis label="Count" />
+                </yAxis>
+            </BarChart>
+            <PieChart fx:id="pieChartSeverity" styleClass="pie-chart" />
+        </HBox>
+        
+        <!-- Detailed Report Table -->
+        <VBox styleClass="table-container" VBox.vgrow="ALWAYS">
+            <Label styleClass="table-title" text="Detailed Report" />
+            <TableView fx:id="tableReport" styleClass="events-table" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colReportDate" text="Date" styleClass="table-column" />
+                    <TableColumn fx:id="colReportEvent" text="Event" styleClass="table-column" />
+                    <TableColumn fx:id="colReportFile" text="File" styleClass="table-column" />
+                    <TableColumn fx:id="colReportSeverity" text="Severity" styleClass="table-column" />
+                    <TableColumn fx:id="colReportDetails" text="Details" styleClass="table-column" />
+                </columns>
+            </TableView>
+        </VBox>
+    </VBox>
+    
+    <!-- Status Bar -->
+    <HBox styleClass="status-bar-container">
+        <Label fx:id="lblReportStatus" text="Ready" styleClass="status-label" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="btnExportReport" text="Export Report" styleClass="action-button, export-button" />
+    </HBox>
+</VBox>

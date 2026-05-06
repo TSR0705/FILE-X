@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Region?>
+
+<VBox fx:id="logsContainer" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.filex.controller.LogsController" styleClass="logs-container">
+    <!-- Header -->
+    <HBox styleClass="logs-header">
+        <Label styleClass="section-title" text="File Activity Logs" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="btnRefresh" text="Refresh" styleClass="action-button, refresh-button" />
+    </HBox>
+    
+    <!-- Search and Filter Bar -->
+    <HBox styleClass="search-filter-bar">
+        <TextField fx:id="txtSearch" promptText="Search logs..." styleClass="search-field" />
+        <ComboBox fx:id="cmbEventType" promptText="Event Type" styleClass="filter-combo" />
+        <ComboBox fx:id="cmbSeverity" promptText="Severity" styleClass="filter-combo" />
+        <CheckBox fx:id="chkSuspiciousOnly" text="Suspicious Only" styleClass="filter-checkbox" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="btnExportCSV" text="Export to CSV" styleClass="action-button, export-button" />
+    </HBox>
+    
+    <!-- Logs Table -->
+    <TableView fx:id="tableLogs" styleClass="logs-table" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colFileName" text="File Name" styleClass="table-column" />
+            <TableColumn fx:id="colEventType" text="Event Type" styleClass="table-column" />
+            <TableColumn fx:id="colTimestamp" text="Timestamp" styleClass="table-column" />
+            <TableColumn fx:id="colHash" text="SHA-256 Hash" styleClass="table-column" />
+            <TableColumn fx:id="colStatus" text="Status" styleClass="table-column" />
+        </columns>
+    </TableView>
+    
+    <!-- Status Bar -->
+    <HBox styleClass="status-bar-container">
+        <Label fx:id="lblLogCount" text="0 logs displayed" styleClass="status-label" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Label fx:id="lblLastUpdated" text="Last updated: Never" styleClass="status-label" />
+    </HBox>
+</VBox>

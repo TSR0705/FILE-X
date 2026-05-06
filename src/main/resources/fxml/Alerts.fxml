@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.Region?>
+
+<VBox fx:id="alertsContainer" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.filex.controller.AlertsController" styleClass="alerts-container">
+    <!-- Header -->
+    <HBox styleClass="alerts-header">
+        <Label styleClass="section-title" text="Security Alerts" />
+        <Label fx:id="lblAlertCount" styleClass="alert-count" text="0" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button fx:id="btnRefreshAlerts" text="Refresh" styleClass="action-button, refresh-button" />
+        <Button fx:id="btnClearAlerts" text="Clear All" styleClass="action-button, export-button" />
+    </HBox>
+    
+    <!-- Search and Filter Bar -->
+    <HBox styleClass="search-filter-bar">
+        <TextField fx:id="txtSearchAlerts" promptText="Search alerts..." styleClass="search-field" />
+        <ComboBox fx:id="cmbSeverityFilter" promptText="Severity" styleClass="filter-combo" />
+        <CheckBox fx:id="chkUnacknowledgedOnly" text="Unacknowledged Only" styleClass="filter-checkbox" />
+        <Region HBox.hgrow="ALWAYS" />
+        <Button text="Notification Center" styleClass="action-button, info-button" onAction="#showNotificationCenter" />
+    </HBox>
+    
+    <!-- Alerts List -->
+    <ListView fx:id="alertsList" styleClass="alerts-list" VBox.vgrow="ALWAYS" />
+    
+    <!-- Action Buttons -->
+    <HBox styleClass="action-buttons">
+        <Button text="Acknowledge" styleClass="action-button, refresh-button" onAction="#acknowledgeAlert" />
+        <Region HBox.hgrow="ALWAYS" />
+    </HBox>
+</VBox>

@@ -1,0 +1,66 @@
+# ==== Gradle ====
+/.gradle/
+/gradle/
+gradlew
+gradlew.bat
+
+# ==== Build outputs ====
+/build/
+/target/
+/compiled/
+/bin/
+
+# ==== IDE files ====
+# IntelliJ
+/.idea/
+*.iml
+*.iws
+
+# Eclipse
+/.settings/
+*.classpath
+*.project
+
+# VS Code
+.vscode/
+
+# ==== Java artifacts ====
+*.class
+*.jar
+*.war
+*.ear
+
+# ==== Native JavaFX libs and other downloaded libs ====
+/javafx/lib/
+/lib/
+
+# ==== Logs ====
+*.log
+/logs/
+
+# ==== OS files ====
+Thumbs.db
+.DS_Store
+ehthumbs.db
+
+# ==== Database files ====
+*.db
+*.sqlite
+/filex.db
+
+# ==== Secrets and credentials ====
+secret_password.txt
+test_password_file.txt
+
+# ==== Setup / installer outputs ====
+setup-*.bat
+
+# ==== Misc ====
+*.tmp
+*.swp
+
+# ==== Maven wrapper (if present) ====
+.mvn/
+
+# ==== Test/build dirs ====
+/test-classes/
