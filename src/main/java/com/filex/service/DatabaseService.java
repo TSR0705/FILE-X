@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Service class for database operations.
- * Handles all interactions with the SQLite database.
+ * Handles all interactions with the MySQL database.
  * Implements singleton pattern for consistent database access.
  */
 public class DatabaseService {
@@ -43,21 +43,25 @@ public class DatabaseService {
      */
     public synchronized void initialize() {
         try {
-            // Load SQLite JDBC Driver
-            Class.forName("org.sqlite.JDBC");
+            // Load MySQL JDBC Driver
+            Class.forName("com.mysql.cj.jdbc.Driver");
             
             // Establish connection only if not already established
             if (connection == null || connection.isClosed()) {
-                connection = DriverManager.getConnection(DatabaseConfig.DB_URL);
+                connection = DriverManager.getConnection(
+                    DatabaseConfig.DB_URL, 
+                    DatabaseConfig.DB_USER, 
+                    DatabaseConfig.DB_PASSWORD
+                );
                 // Create tables if they don't exist
                 createTables();
-                System.out.println("Database connection initialized successfully!");
+                System.out.println("MySQL database connection initialized successfully!");
             }
         } catch (ClassNotFoundException e) {
-            System.err.println("SQLite JDBC Driver not found!");
+            System.err.println("MySQL JDBC Driver not found!");
             e.printStackTrace();
         } catch (SQLException e) {
-            System.err.println("Error initializing database connection!");
+            System.err.println("Error initializing MySQL database connection!");
             e.printStackTrace();
         }
     }
@@ -69,11 +73,11 @@ public class DatabaseService {
         // Create file_events table
         String createFileEventsTable = """
             CREATE TABLE IF NOT EXISTS file_events (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                file_name TEXT NOT NULL,
-                event_type TEXT NOT NULL,
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                file_name VARCHAR(255) NOT NULL,
+                event_type VARCHAR(50) NOT NULL,
                 timestamp TIMESTAMP NOT NULL,
-                sha256 TEXT,
+                sha256 VARCHAR(64),
                 suspicious BOOLEAN DEFAULT FALSE,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
@@ -82,9 +86,9 @@ public class DatabaseService {
         // Create alerts table
         String createAlertsTable = """
             CREATE TABLE IF NOT EXISTS alerts (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                file_event_id INTEGER,
-                severity TEXT NOT NULL,
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                file_event_id INT,
+                severity VARCHAR(20) NOT NULL,
                 acknowledged BOOLEAN DEFAULT FALSE,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 actions_taken TEXT,
