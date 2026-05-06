@@ -29,17 +29,17 @@
                 <Label styleClass="app-title" text="Insider File Leak Detector" />
                 <Region HBox.hgrow="ALWAYS" />
                 <Label fx:id="lblMonitoringStatus" styleClass="monitoring-status" text="MONITORING: OFF" />
-                <Button fx:id="btnStartMonitoring" text="Start Monitoring" styleClass="monitoring-button, start-button" />
-                <Button fx:id="btnStopMonitoring" text="Stop Monitoring" styleClass="monitoring-button, stop-button" />
-                <Button fx:id="btnSimulateEvent" text="Simulate Event" styleClass="simulate-button, button-hover, button-press" />
+                <Button fx:id="btnStartMonitoring" text="Start Monitoring" styleClass="monitoring-button, start-button" onAction="#handleStartMonitoring" />
+                <Button fx:id="btnStopMonitoring" text="Stop Monitoring" styleClass="monitoring-button, stop-button" onAction="#handleStopMonitoring" />
+                <Button fx:id="btnSimulateEvent" text="Simulate Event" styleClass="simulate-button, button-hover, button-press" onAction="#handleSimulateEvent" />
             </HBox>
             <HBox styleClass="sub-topbar">
                 <Label styleClass="folder-label" text="Monitoring: C:/Users/You/Projects/Confidential" />
-                <Button text="Browse" styleClass="action-button, refresh-button" fx:id="btnBrowseFolder" />
+                <Button text="Browse" styleClass="action-button, refresh-button" fx:id="btnBrowseFolder" onAction="#handleBrowseFolder" />
                 <Region HBox.hgrow="ALWAYS" />
-                <Button fx:id="btnRefresh" text="Refresh" styleClass="action-button, refresh-button" />
+                <Button fx:id="btnRefresh" text="Refresh" styleClass="action-button, refresh-button" onAction="#handleRefresh" />
                 <Button fx:id="btnExport" text="Export to CSV" styleClass="action-button, export-button" />
-                <Button text="Statistics" styleClass="action-button, info-button" fx:id="btnStatistics" />
+                <Button text="Statistics" styleClass="action-button, info-button" fx:id="btnStatistics" onAction="#handleStatistics" />
                 <Button text="Notifications" styleClass="action-button, info-button" fx:id="btnNotifications" />
                 <Button text="Toggle Theme" styleClass="action-button, info-button" fx:id="btnToggleTheme" />
                 <Button text="Help" styleClass="action-button, info-button" fx:id="btnHelp" />
