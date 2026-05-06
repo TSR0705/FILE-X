@@ -55,7 +55,7 @@ public class TestBackend {
     private static void testMonitorService() {
         System.out.println("Testing MonitorService...");
         
-        MonitorService monitorService = new MonitorService();
+        MonitorService monitorService = MonitorService.getInstance();
         
         // This would normally start monitoring a directory
         // For testing purposes, we'll just verify it initializes correctly
