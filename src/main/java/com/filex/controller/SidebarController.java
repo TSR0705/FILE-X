@@ -313,16 +313,18 @@ public class SidebarController implements Initializable {
             selectNav("settings");
             animateNavItem(settingsNavItem);
         });
-        
-        themeToggleBtn.setOnAction(event -> {
-            toggleTheme();
-            animateButton(themeToggleBtn);
-        });
-        
-        collapseBtn.setOnAction(event -> {
-            toggleCollapse();
-            animateButton(collapseBtn);
-        });
+    }
+
+    @FXML
+    private void handleThemeToggle() {
+        toggleTheme();
+        animateButton(themeToggleBtn);
+    }
+
+    @FXML
+    private void handleCollapse() {
+        toggleCollapse();
+        animateButton(collapseBtn);
     }
     
     /**
